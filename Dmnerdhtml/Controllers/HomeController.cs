@@ -12,6 +12,7 @@ namespace Dmnerdhtml.Controllers
 	{
 		public ActionResult Index()
 		{
+			ViewBag.MessageSent = TempData["MessageSent"];
 			return View();
 		}
 
@@ -50,6 +51,30 @@ namespace Dmnerdhtml.Controllers
 			return RedirectToAction("Contact");
 		}
 
+		[HttpPost]
+		public ActionResult BookAppoinment(FormCollection form)
+		{
+			MailAddress to = new MailAddress(ConfigurationManager.AppSettings["ToEmailContcat"]);
+			MailMessage message = new MailMessage();
+			message.To.Add(to);
+			message.Subject = "New Message From " + form["name"];
+			message.IsBodyHtml = true;
+			message.BodyEncoding = System.Text.Encoding.ASCII;
+			message.Body = $"Hello Rehan,  New Messge: {form["message"]} from: {form["email"] } " +
+							$"Phone: {form["phone"]} Booking Date: {form["bookDate"]} Time: {form["bookTime"]}";
+
+			SmtpClient smtp = new SmtpClient();
+
+
+			smtp.Send(message);
+			TempData["MessageSent"] = "Message Sent!";
+
+
+			ViewBag.MessageSent = "Message Sent!";
+			return RedirectToAction("Index");
+		}
+
+		
 		public ActionResult ResturantinDesplaines()
 		{
 			ViewBag.Message = "Your contact page.";
