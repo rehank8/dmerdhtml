@@ -68,9 +68,11 @@ namespace Dmnerdhtml.Controllers
 
 			smtp.Send(message);
 			TempData["MessageSent"] = "Message Sent!";
+			
 
 
 			ViewBag.MessageSent = "Message Sent!";
+			
 			return RedirectToAction("Index");
 		}
 
