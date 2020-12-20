@@ -27,9 +27,14 @@ namespace TeacherApplication.Models
 		public sms()
 		{
 			//UserProfile userProfile = DbHelper.GetUserProfile(Helper.UserId);
-			_accountSid = ConfigurationManager.AppSettings["TwilioAccountSId"];// "AC845d34902af6ce50ebc8a1fb8d5941f9";
-			_authToken = ConfigurationManager.AppSettings["TwilioAuthToken"];// "cb259b7261353bb818deda10fd2f46f7";
-			_twilioNumber = ConfigurationManager.AppSettings["TwilioPhone"];// "(219)-249-4775";
+			//_accountSid = ConfigurationManager.AppSettings["TwilioAccountSId"];// "AC845d34902af6ce50ebc8a1fb8d5941f9";
+			//_authToken = ConfigurationManager.AppSettings["TwilioAuthToken"];// "cb259b7261353bb818deda10fd2f46f7";
+			//_twilioNumber = ConfigurationManager.AppSettings["TwilioPhone"];// "(219)-249-4775";
+
+			_accountSid = "AC845d34902af6ce50ebc8a1fb8d5941f9";
+			_authToken = "8e3e0d72573d8326725ed8dee3634f7f";
+			_twilioNumber = "(219)-249-4775";
+
 
 			System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 			_client = new TwilioRestClient(_accountSid, _authToken);
