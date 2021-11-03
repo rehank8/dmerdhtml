@@ -109,7 +109,7 @@ namespace Dmnerdhtml.Controllers
 
 
 			sms objSMS = new sms();
-			objSMS.SendSmsMessage(ConfigurationManager.AppSettings["VendorPhone"], $"Hi, you got a appoinment booked from {form["name"]}  at {form["bookDate"]} {form["bookTime"]} contact {form["phone"]} ");
+			//objSMS.SendSmsMessage(ConfigurationManager.AppSettings["VendorPhone"], $"Hi, you got a appoinment booked from {form["name"]}  at {form["bookDate"]} {form["bookTime"]} contact {form["phone"]} ");
 			objSMS.SendSmsMessage(form["phone"], $"Hi {form["name"]}, Your appoinment is booked at {form["bookDate"]} {form["bookTime"]}, for any changes please call {ConfigurationManager.AppSettings["VendorPhone"]} ");
 			//objSMS.SendSmsMessage(form["phone"], $"Hi {form["name"]}");
 
